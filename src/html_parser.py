@@ -31,7 +31,7 @@ class HtmlParserCsdn(HtmlParser):
             cnt += 1
             for dd in item.find_all('dd'):
                 if cnt==1:
-                    re_data['original'] = dd.get_text()
+                    re_data['origin'] = dd.get_text()
                 elif cnt == 2:
                     re_data['fans'] = dd.get_text()
                 elif cnt == 3:
