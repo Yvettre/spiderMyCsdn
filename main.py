@@ -1,8 +1,13 @@
 # coding=utf-8
 
 from src import *
+import ConfigParser
 
-logger = log.setup_custom_logger('spiderCsdn')
+config = ConfigParser.ConfigParser()
+config.read('config/config.ini')
+logger_name = config.get('logger', 'logger_name')
+
+logger = log.setup_custom_logger(logger_name)
 
 def main():
     spider = spider_main.SpiderMain()

@@ -6,3 +6,4 @@ import html_downloader
 import html_parser
 import outputer
 import log
+import mysql

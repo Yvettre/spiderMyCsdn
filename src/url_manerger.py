@@ -1,6 +1,11 @@
 # coding=utf-8
 
+import ConfigParser
 from abc import ABCMeta, abstractmethod
+
+config = ConfigParser.ConfigParser()
+config.read('./config/config.ini')
+root_html = config.get('root_html', 'html_url')
 
 class UrlManerger(object):
     __metaclass__ = ABCMeta 
@@ -36,5 +41,5 @@ class UrlManergerCsdn(UrlManerger):
     # 初始化需要爬取的url列表
     # 这里只有一个链接
     def initial_url_list(self):
-        new_url = 'http://blog.csdn.net/Yvettre'
+        new_url = root_html
         self.add_new_url(new_url)

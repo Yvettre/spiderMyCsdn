@@ -2,8 +2,13 @@
 
 import logging
 import url_manerger, html_downloader, html_parser, outputer
+import ConfigParser
 
-logger = logging.getLogger('spiderCsdn')
+config = ConfigParser.ConfigParser()
+config.read('./config/config.ini')
+logger_name = config.get('logger', 'logger_name')
+
+logger = logging.getLogger(logger_name)
 
 class SpiderMain(object):
     def __init__(self):
