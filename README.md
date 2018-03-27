@@ -10,8 +10,8 @@
 - 增加``config.ini``，方便统一配置待爬取页面的根链接、mysql的配置信息以及logger的标识名
 
 ## Environments
-python-2.7.14
-mysql-5.5.35
+- python-2.7.14
+- mysql-5.5.35
 
 ## Required Python Packages
 simply one line as follow:
