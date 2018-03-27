@@ -23,30 +23,20 @@ class HtmlParser(object):
 class HtmlParserCsdn(HtmlParser):
     
     def _get_new_data(self, soup):
-        re_data = {}
+        re_data = []
+        re_keys = ['origin','fans','likey','comment','views','score','rank','level']
 
-        cnt = 0
         information_Nodes = soup.find('div', class_='inf_number_box clearfix')       
         for item in information_Nodes.find_all('dl'):
-            cnt += 1
             for dd in item.find_all('dd'):
-                if cnt==1:
-                    re_data['origin'] = dd.get_text()
-                elif cnt == 2:
-                    re_data['fans'] = dd.get_text()
-                elif cnt == 3:
-                    re_data['like'] = dd.get_text()
-                elif cnt == 4:
-                    re_data['comment'] = dd.get_text()
+                re_data.append(dd.get_text())
         
         information_Nodes = soup.find('div', class_='interflow clearfix')
-        span = information_Nodes.find_all('span')
-        re_data['views'] = span[2].get_text()
-        re_data['score'] = span[4].get_text()
-        re_data['rank'] = span[6].get_text()
+        for div in information_Nodes.find_all('div', class_='gradeAndbadge gradewidths'):
+            re_data.append(str(div).split(' ')[3].split('\"')[1])
 
         information_Nodes = soup.find('div', class_='grade gradeAndbadge gradewidths')
         item = str(information_Nodes.find_all('div'))
-        re_data['level'] = item.split(' ')[4][5]
+        re_data.append(item.split(' ')[4][5])
 
-        return re_data
+        return dict(zip(re_keys, re_data))
