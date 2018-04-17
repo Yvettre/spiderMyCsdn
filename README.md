@@ -8,6 +8,7 @@
 - 定时任务给自己发邮件报告当天的博客信息
 - 增加``mysql``模块，将博客信息导入本地的mysql数据库中
 - 增加``config.ini``，方便统一配置待爬取页面的根链接、mysql的配置信息以及logger的标识名
+- 关于代码的详细介绍可戳[我的博文](https://blog.csdn.net/yvettre/article/details/79887024)
 
 ## Environments
 - python-2.7.14
