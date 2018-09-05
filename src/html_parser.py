@@ -41,9 +41,11 @@ class HtmlParserCsdn(HtmlParser):
         information_Nodes = soup.find('div', class_='grade-box clearfix').find_all('dl') 
 
         # 由于get_text()获得的结果中所需数据的前后有空白字符，使用strip()去掉前后的空白字符
-        # 另外：lstrip()是去掉左边的空格，rstrip()是去掉右边的空格    
-        re_data.append(information_Nodes[1].find('dd').get_text().encode('utf-8').strip())  # views
-        re_data.append(information_Nodes[2].find('dd').get_text().encode('utf-8').strip())  # score
+        # 另外：lstrip()是去掉左边的空格，rstrip()是去掉右边的空格
+        re_data.append(information_Nodes[1].find('dd')['title'].encode('utf-8'))  # 具体views量    
+        # re_data.append(information_Nodes[1].find('dd').get_text().encode('utf-8').strip())  # 显示的views量
+        re_data.append(information_Nodes[2].find('dd')['title'].encode('utf-8'))  # 具体score数
+        # re_data.append(information_Nodes[2].find('dd').get_text().encode('utf-8').strip())  # 显示的score数
         re_data.append(information_Nodes[3]['title'].encode('utf-8'))  # rank
 
         # 由于获得的title内容是中文，使用unicode编码，无法直接使用str转为字符串
